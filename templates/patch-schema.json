@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SheetOps REST Patch",
+  "description": "Supported CLI REST patch shape. The CLI also checks project matching and apply-time confirmation. AgentOps.gs has a separate protocol.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "operationId",
+    "project",
+    "reason",
+    "operations"
+  ],
+  "properties": {
+    "operationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requiresApproval": {
+      "type": "boolean",
+      "description": "Compatibility field; apply still requires --confirmed."
+    },
+    "backupRequired": {
+      "type": "boolean",
+      "default": true
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "target",
+              "values"
+            ],
+            "properties": {
+              "type": {
+                "const": "setValues"
+              },
+              "target": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "namedRange": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sheetName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "a1": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "namedRange"
+                    ],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "sheetName"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "a1"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "required": [
+                      "sheetName",
+                      "a1"
+                    ],
+                    "not": {
+                      "required": [
+                        "namedRange"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "confirmLarge": {
+                "type": "boolean"
+              },
+              "confirmDestructive": {
+                "type": "boolean"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "expectedHash": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "target",
+              "values"
+            ],
+            "properties": {
+              "type": {
+                "const": "appendRows"
+              },
+              "target": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "sheetName"
+                ],
+                "properties": {
+                  "sheetName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "a1": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "confirmLarge": {
+                "type": "boolean"
+              },
+              "confirmDestructive": {
+                "type": "boolean"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "target"
+            ],
+            "properties": {
+              "type": {
+                "const": "clearRange"
+              },
+              "target": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "namedRange": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sheetName": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "a1": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "namedRange"
+                    ],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": [
+                            "sheetName"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "a1"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "required": [
+                      "sheetName",
+                      "a1"
+                    ],
+                    "not": {
+                      "required": [
+                        "namedRange"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "confirmLarge": {
+                "type": "boolean"
+              },
+              "confirmDestructive": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

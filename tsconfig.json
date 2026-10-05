@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "useUnknownInCatchVariables": false,
+    "skipLibCheck": true,
+    "declaration": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

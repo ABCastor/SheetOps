@@ -1,0 +1,62 @@
+{
+  "name": "sheetops",
+  "version": "2.1.0",
+  "description": "CLI for Google Sheets range operations, Drive backups, and Apps Script workflows",
+  "private": false,
+  "main": "lib/sheets-api.js",
+  "bin": {
+    "sheetops": "bin/sheetops.js"
+  },
+  "scripts": {
+    "start": "node bin/sheetops.js",
+    "init": "node bin/sheetops.js init",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.cjs",
+    "check:leaks": "node scripts/check-leaks.cjs",
+    "check": "npm run typecheck && npm test && npm run check:leaks",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "google-sheets",
+    "apps-script",
+    "automation",
+    "spreadsheet",
+    "typescript"
+  ],
+  "author": "Anneo22",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ABCastor/SheetOps.git"
+  },
+  "homepage": "https://github.com/ABCastor/SheetOps#readme",
+  "bugs": {
+    "url": "https://github.com/ABCastor/SheetOps/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "googleapis": "^171.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.130",
+    "typescript": "~5.9.3"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "dist/",
+    "sohelper.js",
+    "theme.json",
+    "templates/AgentOps.gs",
+    "templates/patch-schema.json",
+    "SETUP.md",
+    "LICENSE",
+    "NOTICE",
+    "docs/",
+    "src/"
+  ],
+  "types": "dist/lib/sheets-api.d.ts"
+}

@@ -1,0 +1,45 @@
+{
+  "_comment": "SheetOps design tokens. The presentation layer reads this — styling is 'apply the theme', never 'pick colors per sheet'. Repo-level default; a project may override with projects/<name>/theme.json (deep-merged over this). Seed palette = the de-facto house style in Ema's finance workbook, refined against WCAG contrast + Okabe-Ito colorblind-safe chart colors. Colors are hex here; the API layer converts to 0-1 floats.",
+
+  "font": { "family": "", "size": 10 },
+
+  "title":    { "backgroundColor": "#1b2f5a", "foregroundColor": "#ffffff", "bold": true,  "fontSize": 14, "horizontalAlignment": "LEFT",   "verticalAlignment": "MIDDLE", "rowHeight": 36 },
+  "subtitle": { "backgroundColor": "#d0e4f7", "foregroundColor": "#1b2f5a", "bold": false, "fontSize": 11, "horizontalAlignment": "LEFT",   "verticalAlignment": "MIDDLE", "rowHeight": 24 },
+  "header":   { "backgroundColor": "#cfe2f3", "foregroundColor": "#1b2f5a", "bold": true,  "fontSize": 10, "horizontalAlignment": "CENTER", "verticalAlignment": "MIDDLE", "wrapStrategy": "WRAP" },
+
+  "banding":  { "headerColor": "#cfe2f3", "firstBandColor": "#ffffff", "secondBandColor": "#eef4fb" },
+
+  "border":   { "headerBottom": { "style": "SOLID", "color": "#1b2f5a" } },
+
+  "alignment": { "number": "RIGHT", "currency": "RIGHT", "percent": "RIGHT", "integer": "RIGHT", "decimal": "RIGHT", "date": "CENTER", "code": "CENTER", "boolean": "CENTER", "text": "LEFT" },
+
+  "numberFormats": {
+    "currency":  { "type": "CURRENCY", "pattern": "£#,##0.00;[Red]-£#,##0.00" },
+    "currency0": { "type": "CURRENCY", "pattern": "£#,##0;[Red]-£#,##0" },
+    "percent":   { "type": "PERCENT",  "pattern": "0.0%;[Red]-0.0%" },
+    "date":      { "type": "DATE",     "pattern": "yyyy-mm-dd" },
+    "integer":   { "type": "NUMBER",   "pattern": "#,##0;[Red]-#,##0" },
+    "decimal":   { "type": "NUMBER",   "pattern": "#,##0.00;[Red]-#,##0.00" }
+  },
+
+  "autofit": { "maxColWidth": 320, "minColWidth": 60, "wrapOverCap": true },
+
+  "chart": {
+    "palette": ["#1b2f5a", "#e69f00", "#009e73", "#56b4e9", "#d55e00", "#cc79a7", "#f0e442", "#0072b2"],
+    "legendPosition": "BOTTOM_LEGEND",
+    "widthPixels": 600,
+    "heightPixels": 371
+  },
+
+  "conditional": {
+    "negativeColor": "#c00000",
+    "heatmap": { "min": "#f4cccc", "mid": "#ffffff", "max": "#b6d7a8" }
+  },
+
+  "sparkline": { "type": "column", "color": "#aac4e2", "lastColor": "#1b2f5a", "negColor": "#c00000" },
+
+  "marking": {
+    "input":    { "foregroundColor": "#1155cc" },
+    "computed": { "foregroundColor": "#666666", "italic": true }
+  }
+}
