@@ -66,4 +66,4 @@ The checks compile the source, run fake-API contract tests without Google creden
 
 [Apache License 2.0](LICENSE) for this release's owned code. [NOTICE](NOTICE) retains the earlier MIT notice. Dependencies keep their own terms.
 
-<p><a href="https://abcastor.com"><img src="docs/castor-footer.svg" width="350" alt="Chip, the Castor beaver, by Castor, we give a dam"></a></p>
+<p><a href="https://abcastor.com"><img src="docs/castor-footer.svg" width="350" alt="Chip, the Castor beaver, Castor, we give a dam"></a></p>
